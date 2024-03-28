@@ -1,0 +1,159 @@
+﻿@page "/"
+
+<PageTitle>GreenHouse</PageTitle>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Alnero</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            font-size: 1.2rem;
+            padding: 10px 30px;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+        .photo-gallery {
+            margin-top: 50px;
+        }
+
+            .photo-gallery h2 {
+                font-size: 2rem;
+                color: #007bff;
+                margin-bottom: 20px;
+            }
+
+            .photo-gallery .row {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+
+            .photo-gallery img {
+                width: 100%;
+                border-radius: 10px;
+                transition: transform 0.3s ease;
+            }
+
+                .photo-gallery img:hover {
+                    transform: scale(1.1);
+                }
+
+        .feature-box {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+            .feature-box h3 {
+                color: #007bff;
+                margin-bottom: 15px;
+            }
+
+            .feature-box p {
+                color: #555;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Alnero <img src="/galochka.png" alt="galochka" width="40" height="50"></h1>
+        <p>Discover our smart greenhouse system for efficient plant care.</p>
+        <a href="/Order" class="btn btn-primary">Place an Order</a>
+
+        <!-- Add stylish photo gallery -->
+        <div class="photo-gallery">
+            <h2>Explore Our Greenhouse Smart Systems</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="/content-image.jpg" alt="Greenhouse 1">
+                </div>
+                <div class="col-md-4">
+                    <img src="/smart.png" alt="Greenhouse 2">
+                </div>
+                <div class="col-md-4">
+                    <img src="/climate.jpg" alt="Greenhouse 3">
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="feature-box">
+            <h3>What is a Smart Greenhouse?</h3>
+            <p>A smart greenhouse is an advanced agricultural facility equipped with sensors, actuators, and automated systems to create an optimized environment for plant growth. It leverages technology such as Internet of Things (IoT), artificial intelligence (AI), and data analytics to monitor and control various parameters such as temperature, humidity, light, and irrigation.</p>
+            <p>These automated systems enable precise management of environmental conditions, allowing growers to create ideal growing conditions for different types of plants. Smart greenhouses provide real-time insights into plant health and growth progress, empowering growers to make data-driven decisions and maximize yields.</p>
+        </div>
+        <div class="feature-box">
+            <h2>About Alnero </h2>
+            <p>At Alnero, we specialize in providing innovative solutions for greenhouse automation. Our smart greenhouse system offers automated plant care, ensuring optimal conditions for growth and productivity.</p>
+            <p>With our cutting-edge technology, you can remotely monitor and control your greenhouse environment, saving time and resources while maximizing yields. Experience the future of agriculture with Alnero.</p>
+        </div>
+
+
+        <div class="feature-box">
+            <h3>Key Features</h3>
+            <p>Explore the features that make our smart greenhouse system stand out:</p>
+            <ul>
+                <li>Automated watering and fertilization</li>
+                <li>Climate control for temperature and humidity</li>
+                <li>Real-time monitoring and alerts</li>
+                <li>Energy-efficient LED lighting</li>
+                <li>Customizable settings for different plant types</li>
+            </ul>
+        </div>
+
+        <div class="feature-box">
+            <h3>Why Choose Alnero?</h3>
+            <p>Here are some reasons to choose Alnero for your greenhouse automation needs:</p>
+            <ul>
+                <li>Expertise in agricultural technology</li>
+                <li>Reliable and user-friendly solutions</li>
+                <li>Exceptional customer support</li>
+                <li>Continuous innovation and updates</li>
+                <li>Proven track record of success</li>
+            </ul>
+        </div>
+
+        <div class="feature-box">
+            <h3>Get Started Today</h3>
+            <p>Ready to experience the benefits of our smart greenhouse system? Place your order now and take the first step towards optimized plant care and increased productivity.</p>
+            <a href="/Order" class="btn btn-primary">Place an Order</a>
+        </div>
+    </div>
+</body>
