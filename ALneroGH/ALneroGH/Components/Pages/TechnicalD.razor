@@ -26,8 +26,13 @@
 
         h1 {
             font-size: 3rem;
-            color: #007bff;
-            margin-bottom: 30px;
+            color: #44899c;
+            margin-bottom: 30px;        
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+        }
         }
 
         p {
@@ -49,7 +54,7 @@
         }
 
         th {
-            background-color: #007bff;
+            background-color: #44899c;
             color: #fff;
         }
 
@@ -58,8 +63,8 @@
         }
 
         input.form-control {
-            height: 20;
-            width: 20;
+            height: 20%;
+            width: 20%;
         }
 
         .btn-primary {
@@ -84,11 +89,9 @@
             <div class="form-group">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
                     <label for="greenhouseSize">Greenhouse Size (in square meters)</label>
-                    <input  min="5" max="5000" type="number" style="width: 200px;" class="form-control" id="greenhouseSize" placeholder="Enter greenhouse size">
+                    <input min="5" max="5000" type="number" style="width: 200px;" class="form-control"
+                           id="greenhouseSize" placeholder="Enter greenhouse size">
                 </div>
-
-
-
             </div>
 
             <table>
@@ -103,11 +106,46 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><img src="/temperature-sensor.jpg" alt="Temperature Sensor" width="100"></td>
+                        <td><img src="/dht_sensor.png" alt="Temperature Sensor" width="100"></td>
                         <td>Temperature Sensor</td>
                         <td>Monitors temperature inside the greenhouse.</td>
-                        <td>50</td>
-                        <td><input type="checkbox"  name="sensors" value="temperature"></td>
+                        <td>5</td>
+                        <td><input type="checkbox" name="sensors" value="temperature"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/ventilator_sensor.jpg" alt="Ventilator" width="100"></td>
+                        <td>Ventilator</td>
+                        <td>Provides air circulation inside the greenhouse.</td>
+                        <td>35</td>
+                        <td><input type="checkbox" name="sensors" value="ventilator"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/lightsensor.png" alt="Light Sensor" width="100"></td>
+                        <td>Light Sensor</td>
+                        <td>Detects outside light intensity to adjust internal lighting.</td>
+                        <td>8</td>
+                        <td><input type="checkbox" name="sensors" value="light_sensor"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/LED-Light.jpg" alt="LED Lights" width="100"></td>
+                        <td>LED Lights</td>
+                        <td>Provides artificial lighting for plants.</td>
+                        <td>15</td>
+                        <td><input type="checkbox" name="sensors" value="led_lights"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/water_sensor.png" alt="Water Sensor" width="100"></td>
+                        <td>Water Sensor & Pump</td>
+                        <td>Monitors soil moisture and provides water accordingly.</td>
+                        <td>20</td>
+                        <td><input type="checkbox" name="sensors" value="water_sensor"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/remote.jpg" alt="Remote Controller" width="100"></td>
+                        <td>Remote Controller</td>
+                        <td>Controls doors or windows remotely for ventilation.</td>
+                        <td>40</td>
+                        <td><input type="checkbox" name="sensors" value="remote_controller"></td>
                     </tr>
                     <!-- Add more sensor rows here -->
                 </tbody>

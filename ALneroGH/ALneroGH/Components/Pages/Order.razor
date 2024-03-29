@@ -116,10 +116,9 @@
     public void UpdateCities(ChangeEventArgs e)
     {
         var selectedProvince = (string)e.Value;
-        if (provinceCities.ContainsKey(selectedProvince))
+        if (selectedProvince != null && provinceCities.ContainsKey(selectedProvince))
         {
             cities = provinceCities[selectedProvince];
-
         }
         else
         {
