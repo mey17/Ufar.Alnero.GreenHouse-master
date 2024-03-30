@@ -33,7 +33,7 @@
             letter-spacing: 2px;
             text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
         }
-        }
+        
 
         p {
             font-size: 1.2rem;
@@ -87,13 +87,19 @@
         <p>Customize your smart greenhouse system by selecting sensor components and providing greenhouse size.</p>
         <form>
             <div class="form-group">
-                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                <div style="display: flex; justify-content:space-between;">
                     <label for="greenhouseSize">Greenhouse Size (in square meters)</label>
-                    <input min="5" max="5000" type="number" style="width: 200px;" class="form-control"
-                           id="greenhouseSize" placeholder="Enter greenhouse size">
+                    <input min="5" max="5000" type="number" style="width: 100px;" class="form-control"
+                           id="greenhouseSize" placeholder="m^2">
+                    <label for="greenhouseRows">Greenhouse rows</label>
+                    <input min="1" max="50" type="number" style="width: 100px;" class="form-control"
+                           id="greenhouseRows" placeholder="10..30..40">
+                    <label for="greenhouseRowMeter">Greenhouse row in meters</label>
+                    <input min="1" max="350" type="number" style="width: 100px;" class="form-control"
+                           id="greenhouseRowMeter" placeholder="m">
                 </div>
             </div>
-
+            
             <table>
                 <thead>
                     <tr>
