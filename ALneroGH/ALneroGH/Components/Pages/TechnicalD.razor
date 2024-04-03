@@ -1,164 +1,164 @@
 ﻿@page "/technical-description"
-@attribute [StreamRendering]
-
-
+@rendermode InteractiveAuto
 
 <PageTitle>Technical Description</PageTitle>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Description - Alnero</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 3rem;
-            color: #44899c;
-            margin-bottom: 30px;        
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-
-        p {
-            font-size: 1.2rem;
-            color: #555;
-            margin-bottom: 30px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 30px;
-        }
-
-        th, td {
-            border: 1px solid #dee2e6;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #44899c;
-            color: #fff;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        input.form-control {
-            height: 20%;
-            width: 20%;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            font-size: 1.2rem;
-            padding: 10px 30px;
-        }
-
-            .btn-primary:hover {
-                background-color: #0056b3;
-                border-color: #0056b3;
-            }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <h1>Technical Description</h1>
-        <p>Customize your smart greenhouse system by selecting sensor components and providing greenhouse size.</p>
-        <form>
-            <div class="form-group">
-                <div style="display: flex; justify-content:space-between;">
-                    <label for="greenhouseSize">Greenhouse Size (in square meters)</label>
-                    <input min="5" max="5000" type="number" style="width: 100px;" class="form-control"
-                           id="greenhouseSize" placeholder="m^2">
-                    <label for="greenhouseRows">Greenhouse rows</label>
-                    <input min="1" max="50" type="number" style="width: 100px;" class="form-control"
-                           id="greenhouseRows" placeholder="10..30..40">
-                    <label for="greenhouseRowMeter">Greenhouse row in meters</label>
-                    <input min="1" max="350" type="number" style="width: 100px;" class="form-control"
-                           id="greenhouseRowMeter" placeholder="m">
-                </div>
+<div class="container">
+    <h1>Technical Description</h1>
+    <p>Customize your smart greenhouse system by selecting sensor components and providing greenhouse size.</p>
+    <form @onsubmit="CalculateOrder">
+        <div class="form-group">
+            <div style="display: flex; justify-content:space-between;">
+                <label for="greenhouseSize">Greenhouse Size (in square meters)</label>
+                <input @bind="greenhouseSize" min="5" max="5000" type="number" style="width: 100px;" class="form-control" id="greenhouseSize" placeholder="m^2">
+                <label for="greenhouseRows">Greenhouse rows</label>
+                <input @bind="greenhouseRows" min="1" max="50" type="number" style="width: 80px;" class="form-control" id="greenhouseRows" placeholder="10..30..40">
+                <label for="greenhouseRowMeter">Greenhouse row in meters</label>
+                <input @bind="greenhouseRowMeter" min="1" max="350" type="number" style="width: 80px;" class="form-control" id="greenhouseRowMeter" placeholder="m">
             </div>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Price ($)</th>
-                        <th>Select</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="/dht_sensor.png" alt="Temperature Sensor" width="100"></td>
-                        <td>Temperature Sensor</td>
-                        <td>Monitors temperature inside the greenhouse.</td>
-                        <td>5</td>
-                        <td><input type="checkbox" name="sensors" value="temperature"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="/ventilator_sensor.jpg" alt="Ventilator" width="100"></td>
-                        <td>Ventilator</td>
-                        <td>Provides air circulation inside the greenhouse.</td>
-                        <td>35</td>
-                        <td><input type="checkbox" name="sensors" value="ventilator"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="/lightsensor.png" alt="Light Sensor" width="100"></td>
-                        <td>Light Sensor</td>
-                        <td>Detects outside light intensity to adjust internal lighting.</td>
-                        <td>8</td>
-                        <td><input type="checkbox" name="sensors" value="light_sensor"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="/LED-Light.jpg" alt="LED Lights" width="100"></td>
-                        <td>LED Lights</td>
-                        <td>Provides artificial lighting for plants.</td>
-                        <td>15</td>
-                        <td><input type="checkbox" name="sensors" value="led_lights"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="/water_sensor.png" alt="Water Sensor" width="100"></td>
-                        <td>Water Sensor & Pump</td>
-                        <td>Monitors soil moisture and provides water accordingly.</td>
-                        <td>20</td>
-                        <td><input type="checkbox" name="sensors" value="water_sensor"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="/remote.jpg" alt="Remote Controller" width="100"></td>
-                        <td>Remote Controller</td>
-                        <td>Controls doors or windows remotely for ventilation.</td>
-                        <td>40</td>
-                        <td><input type="checkbox" name="sensors" value="remote_controller"></td>
-                    </tr>
-                    <!-- Add more sensor rows here -->
-                </tbody>
-            </table>
+        </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-</body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price ($)</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var sensor in sensorComponents)
+                {
+                    <tr>
+                        <td><img src="@sensor.ImagePath" alt="@sensor.Name" width="100"></td>
+                        <td>@sensor.Name</td>
+                        <td>@sensor.Description</td>
+                        <td>@sensor.Price</td>
+                        <td><input type="checkbox" name="selectedSensors" @bind="sensor.Selected" value="@sensor.Value"></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    @if (showOrder)
+    {
+        <h2>Selected Items</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Individual Price ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var selectedSensor in selectedSensors)
+                {
+                    <tr>
+                        <td>@selectedSensor.Name</td>
+                        <td>@selectedSensor.Quantity</td>
+                        <td>@selectedSensor.IndividualPrice</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total Price:</th>
+                    <th></th>
+                    <th>@totalPrice</th>
+                </tr>
+            </tfoot>
+        </table>
+    }
+</div>
+
+@code {
+    public class SensorComponent
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; }
+        public string ImagePath { get; set; }
+        public bool Selected { get; set; }
+        public string Value { get; set; }
+    }
+
+    public class SelectedSensor
+    {
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+        public double IndividualPrice { get; set; }
+    }
+
+   
+    private List<SensorComponent> sensorComponents = new List<SensorComponent>
+    {
+        new SensorComponent { Name = "Temperature Sensor", Description = "Monitors temperature inside the greenhouse.", Price = 5, ImagePath = "/dht_sensor.png" },
+        new SensorComponent { Name = "Ventilator", Description = "Provides air circulation inside the greenhouse.", Price = 35, ImagePath = "/ventilator_sensor.jpg" },
+        new SensorComponent { Name = "Light Sensor", Description = "Detects outside light intensity to adjust internal lighting.", Price = 3, ImagePath = "/lightsensor.png" },
+        new SensorComponent { Name = "LED Lights", Description = "Provides artificial lighting for plants.", Price = 15, ImagePath = "/LED-Light.jpg" },
+        new SensorComponent { Name = "Water Sensor & Pump", Description = "Monitors soil moisture.", Price = 5, ImagePath = "/water_sensor.png" },
+        new SensorComponent { Name = "Water Pump", Description = "Provides water accordingly.", Price = 15, ImagePath = "/water_pump.png" },
+        new SensorComponent { Name = "Remote Controller", Description = "Controls doors or windows remotely for ventilation.", Price = 40, ImagePath = "/remote.jpg" }
+    };
+
+    private double greenhouseSize;
+    private int greenhouseRows;
+    private double greenhouseRowMeter;
+
+    private List<SelectedSensor> selectedSensors = new List<SelectedSensor>();
+    private bool showOrder = false;
+    private double totalPrice = 0;
+
+    
+    private void CalculateOrder()
+    {
+        selectedSensors.Clear();
+        totalPrice = 0;
+
+        foreach (var sensor in sensorComponents)
+        {
+            if (sensor.Selected)
+            {
+                selectedSensors.Add(new SelectedSensor
+                    {
+                        Name = sensor.Name,
+                        Quantity = CalculateQuantity(sensor.Name),
+                        IndividualPrice = sensor.Price
+                    });
+                totalPrice += CalculateQuantity(sensor.Name) * sensor.Price;
+            }
+        }
+
+        showOrder = true;
+    }
+
+    
+    private int CalculateQuantity(string sensorName)
+    {
+        switch (sensorName)
+        {
+            case "Temperature Sensor":
+                return greenhouseSize <= 100 ? 1 : (int)Math.Ceiling(greenhouseSize / 100);
+            case "Ventilator":
+                return greenhouseSize <= 200 ? 1 : (int)Math.Ceiling(greenhouseSize / 200);
+            case "Light Sensor":
+                return greenhouseSize <= 50 ? 1 : 3;
+            case "LED Lights":
+                return greenhouseRows;
+            case "Water Sensor & Pump":
+                return 3 * greenhouseRows;
+            case "Water Pump":
+                return greenhouseRows;
+            case "Remote Controller":
+                return 1;
+            default:
+                return 0;
+        }
+    }
+}
