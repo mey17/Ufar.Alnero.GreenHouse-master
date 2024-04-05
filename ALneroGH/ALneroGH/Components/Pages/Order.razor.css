@@ -13,12 +13,27 @@
     background-color: rgba(255, 255, 255, 0.9); /* Adding opacity to the background */
     box-shadow: 0 0 20px rgba(30, 129, 176, 0.5); /* Adjusted shadow color */
 }
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 1.2rem;
+    padding: 10px 30px;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
 
 /* Your existing CSS styles remain unchanged */
 h1 {
-    font-size: 2.5rem;
-    color: #007bff;
+    font-size: 3rem;
+    color: #2fa1c1;
     margin-bottom: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 label {

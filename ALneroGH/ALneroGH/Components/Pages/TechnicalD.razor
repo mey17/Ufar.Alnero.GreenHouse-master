@@ -103,7 +103,7 @@
         new SensorComponent { Name = "Light Sensor", Description = "Detects outside light intensity to adjust internal lighting.", Price = 3, ImagePath = "/lightsensor.png" },
         new SensorComponent { Name = "LED Lights", Description = "Provides artificial lighting for plants.", Price = 15, ImagePath = "/LED-Light.jpg" },
         new SensorComponent { Name = "Water Sensor", Description = "Monitors soil moisture.", Price = 5, ImagePath = "/water_sensor.png" },
-        new SensorComponent { Name = "Water Pump", Description = "Provides water accordingly.", Price = 15, ImagePath = "/water_pump.png" },
+        new SensorComponent { Name = "Water Pump", Description = "Provides water accordingly.", Price = 10, ImagePath = "/water_pump.png" },
         new SensorComponent { Name = "Remote Controller", Description = "Controls doors or windows remotely for ventilation.", Price = 40, ImagePath = "/remote.jpg" }
     };
 
@@ -151,7 +151,7 @@
                 return greenhouseSize <= 50 ? 1 : 3;
             case "LED Lights":
                 return greenhouseRows;
-            case "Water Sensor & Pump":
+            case "Water Sensor":
                 return 3 * greenhouseRows;
             case "Water Pump":
                 return greenhouseRows;
