@@ -1,5 +1,5 @@
 ﻿@page "/Order"
-@rendermode InteractiveAuto
+@rendermode InteractiveServer
 
 @using Alnero.Data
 @using Alnero.Data.DAO
@@ -114,6 +114,7 @@
     public void UpdateCities(ChangeEventArgs e)
     {
         var selectedProvince = (string)e.Value;
+        
         if (selectedProvince != null && provinceCities.ContainsKey(selectedProvince))
         {
             cities = provinceCities[selectedProvince];
@@ -122,6 +123,7 @@
         {
             cities.Clear();
         }
+        order.Province = selectedProvince;
 
     }
     [Inject]
@@ -133,6 +135,8 @@
         {
             context.Add(order);
             context.SaveChanges();
+
+
         }
     }
 }
