@@ -4,6 +4,8 @@
 @using Alnero.Data
 @using Alnero.Data.DAO
 @using Alnero.Data.Entities
+@using System.Net.Mail
+@using System.Net
 
 <PageTitle>Order</PageTitle>
 
@@ -135,8 +137,34 @@
         {
             context.Add(order);
             context.SaveChanges();
+            try
+            {
+                using var smtpClient = new SmtpClient("smtp.gmail.com")
+                    {
+                        Port = 587,
+                        Credentials = new NetworkCredential("alnerogreenhouse@gmail.com", "myjnzveptspfqknl"),
+                        EnableSsl = true,
+                    };
 
+                var mailMessage = new MailMessage
+                    {
+                        From = new MailAddress("alnerogreenhouse@gmail.com"),
+                        Subject = "Order Confirmation",
+                        Body = "Thank you for placing your order. We'll process it shortly."
+                    };
+                mailMessage.To.Add(order.Email);
 
+                smtpClient.Send(mailMessage);
+
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception, log it, or display an error message to the user
+                Console.WriteLine($"An error occurred while sending the email: {ex.Message}");
+            }
         }
     }
 }
+        
+        
+  
