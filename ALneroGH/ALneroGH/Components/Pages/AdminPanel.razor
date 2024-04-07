@@ -28,7 +28,7 @@
 }
 else
 {
-    <!-- Display orders -->
+    
     @if (Orders != null && Orders.Any())
     {
         <table class="table">
@@ -42,7 +42,7 @@ else
                     <th>City</th>
                     <th>Street Address</th>
                     <th>Postal Code</th>
-                    <th>Action</th> <!-- New column for the delete button -->
+                    <th>Action</th> 
                 </tr>
             </thead>
             <tbody>
@@ -58,8 +58,8 @@ else
                         <td>@order.StreetAddress</td>
                         <td>@order.PostalCode</td>
                         <td>
-                            <button @onclick="() => DeleteOrder(order.Id)">Delete</button>
-                        </td> <!-- Delete button -->
+                            <button @onclick="() => DeleteOrder(order.Id)">Delete</button> @* Delete *@
+                        </td> 
                     </tr>
                 }
             </tbody>
@@ -83,24 +83,22 @@ else
 
     private async Task Login()
     {
-        // Perform authentication logic here (e.g., check username and password)
-        if (Username == "admin" && Password == "password")
+        
+        if (Username == "admin" && Password == "password") //I will change password in future:)
         {
-            // Authentication successful
+            
             IsAuthenticated = true;
 
-            // Fetch orders from the database
+            
             Orders = await DbContext.order.ToListAsync();
         }
         else
         {
-            // Authentication failed
+            
             IsAuthenticated = false;
 
-            // Clear orders
             Orders = null;
 
-            // Optionally, display a message indicating authentication failure
             ErrorMessage = "Invalid username or password. Please try again.";
         }
     }
@@ -113,7 +111,6 @@ else
             DbContext.order.Remove(orderToDelete);
             await DbContext.SaveChangesAsync();
 
-            // Remove the deleted order from the list
             Orders.Remove(orderToDelete);
         }
     }

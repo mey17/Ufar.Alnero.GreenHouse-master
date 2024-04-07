@@ -83,28 +83,27 @@
 </div>
 
 @code {
-
     public OrderEntity order = new OrderEntity();
 
     private List<string> provinces = new List<string> {
-        "Aragatsotn", "Ararat", "Armavir", "Gegharkunik",
-        "Kotayk", "Lori", "Shirak", "Syunik", "Tavush",
-        "Vayots Dzor", "Yerevan"
-    };
+    "Aragatsotn", "Ararat", "Armavir", "Gegharkunik",
+    "Kotayk", "Lori", "Shirak", "Syunik", "Tavush",
+    "Vayots Dzor", "Yerevan"
+};
 
     private Dictionary<string, List<string>> provinceCities = new Dictionary<string, List<string>> {
-        { "Aragatsotn", new List<string> { "Ashtarak", "Aparan", "Talin", "Mastara", "Talin", "Apaga", "Byurakan", "Maralik" } },
-        { "Ararat", new List<string> { "Artashat", "Masis", "Vedi", "Surenavan", "Ararat", "Yeghegnadzor", "Lusarat" } },
-        { "Armavir", new List<string> { "Armavir", "Vagharshapat", "Metsamor", "Lusarat" } },
-        { "Gegharkunik", new List<string> { "Gavar", "Sevan", "Martuni", "Vardenis", "Tchambarak" } },
-        { "Kotayk", new List<string> { "Hrazdan", "Abovyan", "Tsaghkadzor", "Charentsavan", "Nor Hachn" } },
-        { "Lori", new List<string> { "Vanadzor", "Alaverdi", "Stepanavan", "Spitak", "Tashir" } },
-        { "Shirak", new List<string> { "Gyumri", "Artik", "Maralik", "Talin", "Shirak", "Ani" } },
-        { "Syunik", new List<string> { "Kapan", "Goris", "Sisian", "Meghri", "Agarak" } },
-        { "Tavush", new List<string> { "Ijevan", "Dilijan", "Noyemberyan", "Berdkunk", "Aghstafa" } },
-        { "Vayots Dzor", new List<string> { "Yeghegnadzor", "Jermuk", "Vayk", "Yeghegis", "Gladzor" } },
-        { "Yerevan", new List<string> { "Yerevan" } }
-    };
+    { "Aragatsotn", new List<string> { "Ashtarak", "Aparan", "Talin", "Mastara", "Talin", "Apaga", "Byurakan", "Maralik" } },
+    { "Ararat", new List<string> { "Artashat", "Masis", "Vedi", "Surenavan", "Ararat", "Yeghegnadzor", "Lusarat" } },
+    { "Armavir", new List<string> { "Armavir", "Vagharshapat", "Metsamor", "Lusarat" } },
+    { "Gegharkunik", new List<string> { "Gavar", "Sevan", "Martuni", "Vardenis", "Tchambarak" } },
+    { "Kotayk", new List<string> { "Hrazdan", "Abovyan", "Tsaghkadzor", "Charentsavan", "Nor Hachn" } },
+    { "Lori", new List<string> { "Vanadzor", "Alaverdi", "Stepanavan", "Spitak", "Tashir" } },
+    { "Shirak", new List<string> { "Gyumri", "Artik", "Maralik", "Talin", "Shirak", "Ani" } },
+    { "Syunik", new List<string> { "Kapan", "Goris", "Sisian", "Meghri", "Agarak" } },
+    { "Tavush", new List<string> { "Ijevan", "Dilijan", "Noyemberyan", "Berdkunk", "Aghstafa" } },
+    { "Vayots Dzor", new List<string> { "Yeghegnadzor", "Jermuk", "Vayk", "Yeghegis", "Gladzor" } },
+    { "Yerevan", new List<string> { "Yerevan" } }
+};
 
     private List<string> cities = new List<string>();
 
@@ -151,11 +150,10 @@
                 mailMessage.To.Add(order.Email);
 
                 smtpClient.Send(mailMessage);
-                
+
             }
             catch (Exception ex)
             {
-                // Handle the exception, log it, or display an error message to the user
                 Console.WriteLine($"An error occurred while sending the email: {ex.Message}");
             }
         }

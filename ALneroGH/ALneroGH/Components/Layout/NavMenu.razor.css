@@ -124,8 +124,8 @@
 }
 
     .navbar-toggler:hover {
-        background-color: rgba(255, 255, 255, 0.1); /* Change background color on hover */
-        border-color: rgba(255, 255, 255, 0.3); /* Change border color on hover */
+        background-color: rgba(255, 255, 255, 0.1); 
+        border-color: rgba(255, 255, 255, 0.3); 
     }
 
     .navbar-toggler:checked {

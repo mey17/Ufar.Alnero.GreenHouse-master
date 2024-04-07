@@ -1,17 +1,17 @@
 ﻿.hero {
-    background-image: url('/smart.png'); /* Replace 'background_image.jpg' with the path to your image */
+    background-image: url('/smart.png'); 
     background-size: cover;
     background-position: center;
-    padding: 100px 0; /* Adjust padding as needed */
-    border: 2px solid transparent; /* Add transparent border */
-    transition: border-color 0.3s ease; /* Add transition for border color */
+    padding: 100px 0;
+    border: 2px solid transparent; 
+    transition: border-color 0.3s ease; 
 }
 
 
 
 .hero-content {
     text-align: center;
-    color: #fff; /* Text color for better visibility on the background image */
+    color: #fff;
 }
 
     .hero-content h1 {

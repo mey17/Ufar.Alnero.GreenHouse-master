@@ -1,10 +1,12 @@
 ﻿using Alnero.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Alnero.Data.DAO
 {
@@ -13,9 +15,13 @@ namespace Alnero.Data.DAO
         public ApplicationDbContext(DbContextOptions options) : base(options) 
         { 
 
+
         }
 
         public DbSet<OrderEntity> order {  get; set; }
+        // ApplicationDbContext.cs
 
+      
     }
+
 }
