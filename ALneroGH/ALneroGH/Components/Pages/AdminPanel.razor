@@ -1,0 +1,120 @@
+﻿@page "/admin-panel"
+@using Microsoft.EntityFrameworkCore
+@using Alnero.Data
+@using Alnero.Data.DAO
+@using Alnero.Data.Entities
+@rendermode InteractiveServer
+
+<h1>Admin Panel</h1>
+
+@if (!IsAuthenticated)
+{
+    <div>
+        <h2>Login</h2>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" @bind="Username" />
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" @bind="Password" />
+        </div>
+        <button @onclick="Login">Login</button>
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <p>@ErrorMessage</p>
+        }
+    </div>
+}
+else
+{
+    <!-- Display orders -->
+    @if (Orders != null && Orders.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Province</th>
+                    <th>City</th>
+                    <th>Street Address</th>
+                    <th>Postal Code</th>
+                    <th>Action</th> <!-- New column for the delete button -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Orders)
+                {
+                    <tr>
+                        <td>@order.Id</td>
+                        <td>@order.FirstName @order.LastName</td>
+                        <td>@order.PhoneNumber</td>
+                        <td>@order.Email</td>
+                        <td>@order.Province</td>
+                        <td>@order.City</td>
+                        <td>@order.StreetAddress</td>
+                        <td>@order.PostalCode</td>
+                        <td>
+                            <button @onclick="() => DeleteOrder(order.Id)">Delete</button>
+                        </td> <!-- Delete button -->
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No orders found.</p>
+    }
+}
+
+@code {
+    private bool IsAuthenticated { get; set; } = false;
+    private List<OrderEntity> Orders { get; set; }
+    private string Username { get; set; }
+    private string Password { get; set; }
+    private string ErrorMessage { get; set; }
+
+    [Inject]
+    private ApplicationDbContext DbContext { get; set; }
+
+    private async Task Login()
+    {
+        // Perform authentication logic here (e.g., check username and password)
+        if (Username == "admin" && Password == "password")
+        {
+            // Authentication successful
+            IsAuthenticated = true;
+
+            // Fetch orders from the database
+            Orders = await DbContext.order.ToListAsync();
+        }
+        else
+        {
+            // Authentication failed
+            IsAuthenticated = false;
+
+            // Clear orders
+            Orders = null;
+
+            // Optionally, display a message indicating authentication failure
+            ErrorMessage = "Invalid username or password. Please try again.";
+        }
+    }
+
+    private async Task DeleteOrder(int orderId)
+    {
+        var orderToDelete = Orders.FirstOrDefault(o => o.Id == orderId);
+        if (orderToDelete != null)
+        {
+            DbContext.order.Remove(orderToDelete);
+            await DbContext.SaveChangesAsync();
+
+            // Remove the deleted order from the list
+            Orders.Remove(orderToDelete);
+        }
+    }
+}

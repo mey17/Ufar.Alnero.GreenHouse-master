@@ -14,7 +14,7 @@ namespace Alnero.Data.Entities
         public string FirstName
         {
             get => firstName;
-            set => firstName = value?.Trim(); // Trim leading and trailing whitespace
+            set => firstName = value?.Trim(); // Space-ery hanel
         }
 
         [Required(ErrorMessage = "Last name is required")]
